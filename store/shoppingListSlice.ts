@@ -1,6 +1,5 @@
-// src/store/shoppingListSlice.ts
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ShoppingItem, ShoppingListState } from '../types';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ShoppingItem, ShoppingListState } from "../types";
 
 const initialState: ShoppingListState = {
   items: [],
@@ -12,7 +11,7 @@ interface AddItemPayload {
 }
 
 const shoppingListSlice = createSlice({
-  name: 'shoppingList',
+  name: "shoppingList",
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<AddItemPayload>) => {
@@ -24,10 +23,10 @@ const shoppingListSlice = createSlice({
       });
     },
     removeItem: (state, action: PayloadAction<string>) => {
-      state.items = state.items.filter(item => item.id !== action.payload);
+      state.items = state.items.filter((item) => item.id !== action.payload);
     },
     toggleComplete: (state, action: PayloadAction<string>) => {
-      const item = state.items.find(item => item.id === action.payload);
+      const item = state.items.find((item) => item.id === action.payload);
       if (item) {
         item.completed = !item.completed;
       }
@@ -35,5 +34,6 @@ const shoppingListSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, toggleComplete } = shoppingListSlice.actions;
+export const { addItem, removeItem, toggleComplete } =
+  shoppingListSlice.actions;
 export default shoppingListSlice.reducer;
